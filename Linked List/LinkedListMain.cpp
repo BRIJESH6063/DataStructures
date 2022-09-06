@@ -11,13 +11,27 @@ int main()
     // }
     Node *head = TakeInputTail() ;
     // Node *head2 = TakeInputHead() ;
-    PrintList(head) ;
+    cout << "Length : " << length(head) << "  List : " ; PrintList(head) ;
     // PrintList(head2) ;
-    InsertAtIth(head, 22, 5) ;
-    PrintList(head) ;
+    // InsertAtIth(head, 22, 5) ;
+    // cout << "Length : " << length(head) << "  List : " ; PrintList(head) ;
+    // DeleteAtIth(head, 12) ;
+    // cout << "Length : " << length(head) << "  List : " ; PrintList(head) ;
 
-    DeleteAtIth(head, 12) ;
-    PrintList(head) ;
+    // if(isPresent(head,23)) cout << "23 is present in the linkedList." << endl ;
+    // else cout << "23 is not present in the linkedList." << endl ;
+
+    // if(isPresentRec(head,21)) cout << "21 is present in the linkedList." << endl ;
+    // else cout << "21 is not present in the linkedList." << endl ;
+
+    // Node * mid = MidElement(head) ;
+    // cout << "Mid Element of LinkedList is : " << mid->data << endl ;
+
+    // Reverse(head) ;
+    // cout << "Length : " << length(head) << "  List : " ; PrintList(head) ;
+
+    RemoveKthEnd(head, 3) ;
+    cout << "Length : " << length(head) << "  List : " ; PrintList(head) ;
 
     return 0 ;
 

@@ -80,3 +80,61 @@ void DeleteAtIth(Node * &head, int i)
     }
 }
 
+int length(Node *head)
+{
+    if(head == NULL) return 0 ;
+    else return 1 + length(head->next) ;
+}
+
+bool isPresent(Node *head, int key){
+    while(head){
+        if(head->data == key) return true ;
+        else head = head->next ;
+    }
+
+    return false ;
+}
+
+bool isPresentRec(Node *head, int key){
+    if(head == NULL) return false ;
+    else if(head->data == key) return true ;
+    else return (false || isPresentRec(head->next, key)) ;
+}
+
+Node * MidElement(Node *head){
+    Node *fast = head ; Node *slow = head ;
+    while(fast) {
+        fast = fast->next->next ;
+        slow = slow->next ;
+    }
+
+    return slow ;
+}
+
+void Reverse(Node* &head)
+{
+    if(head == NULL) return ;
+    Node *prev = NULL ; Node *curr = head ; Node *Next = NULL ;
+    while(curr != NULL){
+        Next = curr->next ;
+        curr->next = prev ;
+        prev = curr ; curr = Next ; 
+    }
+
+    head = prev ;
+
+}
+
+void RemoveKthEnd(Node* &head, int k)
+{
+    Node *fast = head ; Node *slow = head ; 
+    while(k--){
+        fast = fast->next ;
+    }
+    while(fast->next){
+        fast = fast->next ;  slow = slow->next ;
+    }
+
+    slow->next = slow->next->next ;
+
+}
