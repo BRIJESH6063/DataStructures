@@ -2,40 +2,32 @@
 #include"CircularSinglyList.cpp"
 using namespace std ;
 
-Node * TakeInputTail()
+Node * TakeInputHead()
 {
-    Node *head = NULL  ; Node *tail = NULL ;
+    Node *head = NULL  ; 
     int data ; cin >> data ;
     while(data != -1){
         Node *node = new Node(data) ;
-        if(head == NULL){
-            tail = node ; head = node ;
-        }
+        if(head == NULL) head = node ;
         else{
-            tail->next = node ; node->prev = tail ;
-            tail = tail->next ;
+            node->next = head ; head = node ;
         }
-
         cin >> data ;
     }
-    tail->next = head ;
     return head ;
 }
 
-Node * TakeInputHead(Node* &head, Node* tail) 
+Node * TakeInputTail() 
 { 
-    Node* head = NULL ; Node* tail = NULL ;
+    Node* head = NULL ; Node* tail = head ;
     int data ; cin >> data ;
     while(data != -1){
         Node *node = new Node(data) ;
         if(head == NULL){
             head = node ; tail = node ;
-        }
-        else{
-            node->next = head ; 
-            head->prev = node ; head = node ;
-        }
-
+        } 
+        else tail->next = node ; 
+        tail = node ;
         cin >> data ;
     }
     tail->next = head ;
@@ -44,12 +36,12 @@ Node * TakeInputHead(Node* &head, Node* tail)
 
 void PrintList(Node * head){
    
-    Node* tail = head ;
-    while(head->next != tail){
-        cout << head->data << "-->" ;
-        head = head->next ;
+    Node* tail = head ; int count = 2 ;
+    while(tail != head || count > 0){
+        cout << tail->data << "-->" ;
+        tail = tail->next ;
+        if(tail->next == head) count -- ;
     }
-    cout << "NULL" << endl ;
 }
 
 
