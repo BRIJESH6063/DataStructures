@@ -1,29 +1,30 @@
 #include<bits/stdc++.h>
 using namespace std ;
 
+template<typename T> 
 class Stack {
      private :
-             int* arr ; int capacity ; int top ;
+             T* arr ; int capacity ; int top ;
      public  :
              Stack(){
                  this->capacity = 5 ; top = -1 ;
-                 arr = new int[capacity] ;
+                 arr = new T[capacity] ;
              }
              Stack(int capacity){
                  top = -1 ; this->capacity = capacity ;
-                 arr = new int[capacity] ;
+                 arr = new T[capacity] ;
              }
              int size(){
                 return (top+1) ;
              }
-             void push(int data){
+             void push(T data){
                 if(top < capacity-1) {
                     top ++ ; arr[top] = data ;
                 }
                 else {
                     // cout << "Error! cannot insert data in the stack." << endl ;
                     capacity *= 2 ; 
-                    int* newArr = new int[capacity] ;
+                    T* newArr = new T[capacity] ;
                     for(int i=0; i<=top; i++) newArr[i] = arr[i] ;
                     delete [] arr ; arr = newArr ;
                     top ++ ; arr[top] = data ;
@@ -34,10 +35,11 @@ class Stack {
                 if(top == -1) return true ;
                 else return false ;
              }
-             int getTop(){
-                return top ;
+             T getTop(){
+                if(top >= 0 && top < capacity) return top ;
+                else return -1 ;
              }
-             int* getArr(){
+             T* getArr(){
                 return arr ;
              }
 
@@ -46,6 +48,7 @@ class Stack {
             }
 
             void pop(){
-                top -- ;
+                if(top == -1) return ;
+                else top -- ;
             }
 } ;

@@ -49,3 +49,10 @@ int main() {
 
     return 0 ;
 }
+
+
+/*
+  Return 0 number, double, boolean, NULL, char all hence consider using Template returns.
+  
+
+*/

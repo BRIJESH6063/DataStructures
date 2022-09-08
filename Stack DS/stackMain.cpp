@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    Stack* stk = new Stack() ;
+    Stack<char>* stk = new Stack<char>() ;
     cout << stk->getCapacity() << endl ;
     TakeInput(stk)  ;
     printStack(stk) ;
