@@ -68,3 +68,67 @@ void PrintTreeLevelWise(TreeNode<int>* root)
         cout << endl ;
     }
 }
+
+int countNodes(TreeNode<int>* root)
+{
+    int ans = 1 ;
+    for(auto x : root->child){
+        ans += countNodes(x) ;
+    }
+    return ans ;
+}
+
+int height(TreeNode<int>* root)
+{
+    int maxH = 0 ;  // storing the maximum height at any level.
+    for(auto x : root->child){
+        int childHeight = height(x) ;
+        maxH = max(maxH, childHeight) ;
+    }
+    return maxH + 1 ;
+}
+
+void printAtLevelk(TreeNode<int>* root, int k){
+    if(! root) return ;
+    if(k == 0) {
+        cout << root->data << " " ;
+        return ;
+    }
+    for(auto x : root->child){
+        printAtLevelk(x, k-1) ;
+    }
+}
+
+int countLeafNodes(TreeNode<int>* root){
+    if(! root) return 0 ;
+    if(root->child.size() == 0) return  1 ;
+    int ans = 0 ;
+    for(auto x : root->child){
+        ans += countLeafNodes(x) ;
+    }
+    return ans ;
+}
+
+void PreOrderTraversal(TreeNode<int>* root){
+    if(! root) return ;  // edge case not base case.
+    cout << root->data << "  " ;
+    for(auto x : root->child){
+        PreOrderTraversal(x) ;
+    }
+}
+
+void PostOrderTraversal(TreeNode<int>* root){
+    if(! root) return ;
+    for(auto x : root->child){
+        PreOrderTraversal(x) ;
+    }
+    cout << root->data << "  " ;
+}
+
+void deleteTree(TreeNode<int>* root){
+    if(! root) return ;
+    for(int i=0; i<root->child.size(); i++){
+        deleteTree(root->child[i]) ;
+    }
+    delete root ; root = NULL ;
+}
